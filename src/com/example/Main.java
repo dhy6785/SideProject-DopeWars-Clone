@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        String title = "Welcome to Drug Wars! You have 30 days til the loan sharks collect!";
+        String title = "Welcome to Drug Wars! You have 30 days till the loan sharks collect!";
 
         int maxDays = 30;
         Player player = new Player();
@@ -19,32 +19,32 @@ public class Main {
         Scanner scan = new Scanner(System.in);
         Map<Drugs,String> drugsList;
 
-        do {
+        int input;
 
-            System.out.println(Drugs.COCAINE);
+        do {
             System.out.println(maxDays);
-            drugsList = generateDrugsList();
             System.out.println("1: Buy or Sell  2: View Inventory  3: Move onto next City");
-            System.out.println(drugsList.toString);
-            maxDays--;
+            drugsList = Prices.generateDrugsList();
+            System.out.println(drugsList.toString());
+            input = scan.nextInt();
+            switch(input) {
+                case 1:
+                    System.out.println("Buy/Sell");
+                    break;
+                case 2:
+                    System.out.println("Inventory");
+                    break;
+                case 3:
+                    System.out.println("Move Cities");
+                    maxDays--;
+                default:
+                    // do nothing
+            }
+
 
         } while (maxDays > 0);
 
 
     }
-
-    public Map<Drugs,String> generateDrugsList() {
-        Map<Drugs, String> drugs = new HashMap<Drugs, String>();
-        drugs.put(Drugs.COCAINE, Integer.toString(Prices.range(12000,30000)));
-        drugs.put(Drugs.HEROIN, Integer.toString(Prices.range(5000,12000)));
-        drugs.put(Drugs.ACID, Integer.toString(Prices.range(1000,4000)));
-        drugs.put(Drugs.WEED, Integer.toString(Prices.range(300,800)));
-        drugs.put(Drugs.SPEED, Integer.toString(Prices.range(100,300)));
-        drugs.put(Drugs.LUDES, Integer.toString(Prices.range(10,90)));
-        return drugs;
-    }
-
-
-
 
 }
