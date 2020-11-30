@@ -6,7 +6,7 @@ import java.util.Map;
 public class Player {
 
     int health = 10;
-    int wallet = 0;
+    int wallet = 2000;
     Map<String,String> inventory = new HashMap<String,String>();
 
     public int getHealth() {
@@ -25,15 +25,15 @@ public class Player {
         this.wallet = wallet;
     }
 
-    public String getItem(String itemName) {
-        return inventory.get(itemName);
+    public Integer getDrugQuantity(String itemName) {
+        return Integer.valueOf(inventory.get(itemName));
     }
 
     public void addItem(String itemName, String qty) {
         inventory.put(itemName, qty);
     }
 
-    public String getAllItems() {
+    public String printInventory() {
         return inventory.toString();
     }
 
