@@ -2,11 +2,6 @@ package com.example;
 
 import com.example.objects.DrugsInventory;
 import com.example.objects.Player;
-import com.example.util.Drugs;
-import com.example.util.Prices;
-
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
@@ -24,6 +19,7 @@ public class Main {
 
         do {
             System.out.println("Day: "+ maxDays);
+            System.out.println("Balance: " + player.getWallet());
             System.out.println("1: Buy  2: Sell 3: Move onto next City");
 
             System.out.println(drugsInv.getDrugsList().toString());

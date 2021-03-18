@@ -59,7 +59,7 @@ public class DrugsInventory {
             System.out.println("You don't have enough money");
         } else {
             // Update player's wallet funds
-            player.setWallet(player.getWallet() - totalRemaining);
+            player.setWallet(totalRemaining);
 
             System.out.println("You have : " + totalRemaining + " remaining and obtained " + amount + " drug " + drug);
 
@@ -74,7 +74,7 @@ public class DrugsInventory {
 
         // Drug selection
         String drug, purchase;
-        int wallet = player.getWallet();
+        //int wallet = player.getWallet();
 
         // Show the current list of drugs
         drugsList.toString();
@@ -84,12 +84,15 @@ public class DrugsInventory {
 
         // Show the options to the player
         System.out.println("Which Drugs to sell?");
+        scan.nextLine();
         drug = scan.nextLine();
         System.out.println("How much do you want to sell?");
         int amount = scan.nextInt();
+        scan.nextLine();
 
         int selectedDrugQuantity = player.getDrugQuantity(drug);
-        int totalGained = wallet + Integer.valueOf(drugsList.get(drug) * amount); //TODO fix: get price of drug then multiply by amount sold
+        //Integer.parseInt(drugsList.get(DRUGS.valueOf(drug))
+        int totalGained = player.getWallet() + (Integer.parseInt(drugsList.get(DRUGS.valueOf(drug))) * amount);
 
         // Check if we have the necessary amount of that drug
         if(player.getDrugQuantity(drug) > 0 ) {
